@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'loading-screen.dart';
+import 'detect-peripherals-screen.dart';
 
 void main() => runApp(new MyApp());
 
@@ -11,6 +12,8 @@ class MyApp extends StatelessWidget {
       title: 'BulletFinger',
       routes: <String, WidgetBuilder> {
         '/' : (BuildContext context) => new LoadingScreen(),
+        '/detect-peripherals':
+            (BuildContext context) => new DetectPeripheralsScreen(),
         '/main' : (BuildContext context) => new MyHomePage(title: 'main'),
       },
       theme: new ThemeData(

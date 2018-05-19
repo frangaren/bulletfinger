@@ -8,15 +8,14 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIOverlays([]);
-    new Future.delayed(new Duration(seconds: 2))
-        .then((_) => Navigator.pushReplacementNamed(context, '/main')
+    new Future.delayed(new Duration(seconds: 2)).then(
+            (_)=>Navigator.pushReplacementNamed(context, '/detect-peripherals')
     );
   }
 
   @override
   void deactivate() {
     super.deactivate();
-    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
   }
 
   @override
