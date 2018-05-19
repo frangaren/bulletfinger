@@ -83,6 +83,13 @@ class MyDrawer extends StatelessWidget {
               name: 'Estadísticas',
               icon: Icons.show_chart
           ),
+          new Divider(),
+          build_entry(
+              context,
+              route: '/help',
+              name: 'Ayuda',
+              icon: Icons.help
+          ),
         ],
       ),
     );
