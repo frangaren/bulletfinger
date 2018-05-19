@@ -17,6 +17,18 @@ class LoadingScreen extends StatelessWidget {
               image: new AssetImage('assets/icon.png'),
               width: 240.0,
             ),
+            new Container(
+              margin: new EdgeInsets.only(
+                  top: 30.0
+              ),
+              child: new Text(
+                'BulletFinger',
+                style: new TextStyle(
+                  color: Colors.white,
+                  fontSize: 40.0,
+                ),
+              ),
+            ),
           ],
         ),
       ),
