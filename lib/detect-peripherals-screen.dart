@@ -42,7 +42,16 @@ class _DetectPeripheralsScreenState extends State<DetectPeripheralsScreen> {
     return new Scaffold(
       backgroundColor: Color(0xFF1775D1),
       body: new Center(
-        child: this.buildButton(context),
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            new Image(
+              image: new AssetImage('assets/instructions.png'),
+            ),
+            this.buildButton(context),
+          ],
+        ),
       ),
     );
   }
