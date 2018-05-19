@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         '/' : (BuildContext context) => new LoadingScreen(),
         '/detect-peripherals':
             (BuildContext context) => new DetectPeripheralsScreen(),
-        '/main' : (BuildContext context) => new MyHomePage(title: 'main'),
+        '/home' : (BuildContext context) => new MyHomePage(title: 'main'),
       },
       theme: new ThemeData(
         // This is the theme of your application.
@@ -25,7 +25,10 @@ class MyApp extends StatelessWidget {
         // "hot reload" (press "r" in the console where you ran "flutter run",
         // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
         // counter didn't reset back to zero; the application is not restarted.
-        primarySwatch: Colors.blue,
+        primaryColor: Color(0xFF1775D1),
+        accentColor: Color(0xFFFBC02D),
+        buttonColor: Color(0xFFFBC02D),
+        disabledColor: Color(0xFFC49000),
       ),
     );
   }

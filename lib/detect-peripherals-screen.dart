@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class _DetectPeripheralsScreenState extends State<DetectPeripheralsScreen> {
+  RaisedButton button = new RaisedButton(
+    child: new Text('DETECTANDO'),
+    disabledTextColor: Colors.black,
+    onPressed: null,
+  );
 
   @override
   void initState() {
@@ -20,7 +25,7 @@ class _DetectPeripheralsScreenState extends State<DetectPeripheralsScreen> {
     return new Scaffold(
       backgroundColor: Color(0xFF1775D1),
       body: new Center(
-        child: new Text('Hello world'),
+        child: this.button,
       ),
     );
   }
