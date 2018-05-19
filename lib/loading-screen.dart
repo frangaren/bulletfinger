@@ -1,11 +1,26 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class LoadingScreen extends StatelessWidget {
+class _LoadingScreenState extends State<LoadingScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setEnabledSystemUIOverlays([]);
+    new Future.delayed(new Duration(seconds: 2))
+        .then((_) => Navigator.pushReplacementNamed(context, '/main')
+    );
+  }
+
+  @override
+  void deactivate() {
+    super.deactivate();
+    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+  }
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays([]);
     return new Scaffold(
       backgroundColor: Color(0xFF1775D1),
       body: new Center(
@@ -34,4 +49,14 @@ class LoadingScreen extends StatelessWidget {
       ),
     );
   }
+
+}
+
+class LoadingScreen extends StatefulWidget {
+
+  @override
+  State<StatefulWidget> createState() {
+    return new _LoadingScreenState();
+  }
+
 }

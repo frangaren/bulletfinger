@@ -9,6 +9,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'BulletFinger',
+      routes: <String, WidgetBuilder> {
+        '/' : (BuildContext context) => new LoadingScreen(),
+        '/main' : (BuildContext context) => new MyHomePage(title: 'main'),
+      },
       theme: new ThemeData(
         // This is the theme of your application.
         //
@@ -20,7 +24,6 @@ class MyApp extends StatelessWidget {
         // counter didn't reset back to zero; the application is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: new LoadingScreen(), //new MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
