@@ -9,7 +9,23 @@ class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Drawer(
-      child: new Text('Hello World!'),
+      child: new ListView(
+        children: <Widget>[
+          new UserAccountsDrawerHeader(
+            accountName: new Text('Francisco'),
+            accountEmail: new Text('frangaren@usal.es'),
+            currentAccountPicture: new Container(
+              decoration: new BoxDecoration(
+                shape: BoxShape.circle,
+                image: new DecorationImage(
+                  fit: BoxFit.fill,
+                  image: new AssetImage('assets/blank-profile.png'),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
