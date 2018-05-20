@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:bulletfinger/models/profile.dart';
 import 'package:bulletfinger/views/drawer.dart';
+import 'package:bulletfinger/views/profile-picture.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfileScreenState extends State<ProfileScreen> {
   final Profile profile;
@@ -14,7 +16,6 @@ class ProfileScreenState extends State<ProfileScreen> {
       setState(() {});
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -30,17 +31,7 @@ class ProfileScreenState extends State<ProfileScreen> {
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new Container(
-              width: 200.0,
-              height: 200.0,
-              decoration: new BoxDecoration(
-                shape: BoxShape.circle,
-                image: new DecorationImage(
-                  fit: BoxFit.fill,
-                  image: profile.image,
-                ),
-              ),
-            ),
+            new ProfilePicture(profile),
           ],
         ),
       ),
