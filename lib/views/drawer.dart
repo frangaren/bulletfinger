@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:bulletfinger/views/profile-header.dart';
+import 'package:bulletfinger/models/profile.dart';
 
 class MyDrawer extends StatelessWidget {
 
@@ -40,19 +42,11 @@ class MyDrawer extends StatelessWidget {
     return new Drawer(
       child: new ListView(
         children: <Widget>[
-          new UserAccountsDrawerHeader(
-            accountName: new Text('Francisco'),
-            accountEmail: new Text('frangaren@usal.es'),
-            currentAccountPicture: new Container(
-              decoration: new BoxDecoration(
-                shape: BoxShape.circle,
-                image: new DecorationImage(
-                  fit: BoxFit.fill,
-                  image: new AssetImage('assets/blank-profile.png'),
-                ),
-              ),
-            ),
-          ),
+          new ProfileHeader(new Profile(
+              'frangaren',
+              'frangaren@mail.something',
+              '111222333'
+          )),
           build_entry(
               context,
               route: '/home',

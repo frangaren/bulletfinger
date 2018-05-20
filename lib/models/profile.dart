@@ -1,24 +1,36 @@
-import 'dart:typed_data';
-import 'package:observe/observe.dart';
+import 'package:flutter/painting.dart';
+import 'package:observable/observable.dart';
 
-class Profile extends Object with Observable {
-  @observable
-  ByteData _image;
-  @observable
+class Profile extends PropertyChangeNotifier {
+  ImageProvider _image;
   String _name;
-  @observable
   String _mail;
-  @observable
   String _phone;
-  @observable
   DateTime _lastGame;
+
+  final IMAGE = new Symbol('image');
+  final NAME = new Symbol('name');
+  final MAIL = new Symbol('mail');
+  final PHONE = new Symbol('phone');
+  final LASTGAME = new Symbol('lastGame');
+
+  Profile(String name, String mail, String phone, {ImageProvider image: null}) {
+    this.name = name;
+    this.mail = mail;
+    this.phone = phone;
+    if (image == null) {
+      this.image = AssetImage('assets/blank-profile.png');
+    } else {
+      this.image = image;
+    }
+  }
 
   get image {
     return this._image;
   }
 
-  set image(ByteData value) {
-    this._image = value;
+  set image(ImageProvider value) {
+    this._image = notifyPropertyChange(IMAGE, this._image, value);
   }
 
   get name {
@@ -26,7 +38,7 @@ class Profile extends Object with Observable {
   }
 
   set name(String value) {
-    this._name = value.trim();
+    this._name = notifyPropertyChange(NAME, this._name, value.trim());
   }
 
   get mail {
@@ -36,7 +48,7 @@ class Profile extends Object with Observable {
   set mail(String value) {
     final RegExp mailRegex = new RegExp(r"^.+@.+\..+$");
     if (mailRegex.hasMatch(value)) {
-      this._mail = value.trim();
+      this._mail = notifyPropertyChange(MAIL, this._mail, value.trim());
     } else {
       throw new Exception('Invalid mail');
     }
@@ -47,9 +59,9 @@ class Profile extends Object with Observable {
   }
 
   set phone(String value) {
-    final RegExp mailRegex = new RegExp(r"^\d{9}$");
-    if (mailRegex.hasMatch(value)) {
-      this._mail = value.trim();
+    final RegExp phoneRegex = new RegExp(r"^\d{9}$");
+    if (phoneRegex.hasMatch(value)) {
+      this._phone = notifyPropertyChange(PHONE, this._phone, value.trim());
     } else {
       throw new Exception('Invalid phone');
     }
@@ -60,7 +72,8 @@ class Profile extends Object with Observable {
   }
 
   void updateLastGame() {
-    this._lastGame = new DateTime.now();
+    DateTime value = new DateTime.now();
+    this._lastGame = notifyPropertyChange(LASTGAME, this._lastGame, value);
   }
 
 }

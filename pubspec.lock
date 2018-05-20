@@ -85,6 +85,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.2"
+  dart_internal:
+    dependency: transitive
+    description:
+      name: dart_internal
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -207,13 +214,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.4.0"
-  observe:
+  observable:
     dependency: "direct main"
     description:
-      name: observe
+      name: observable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.10+4"
+    version: "0.22.1+2"
   package_config:
     dependency: transitive
     description:
