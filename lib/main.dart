@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'loading-screen.dart';
-import 'detect-peripherals-screen.dart';
-import 'drawer.dart';
+import 'package:bulletfinger/views/loading-screen.dart';
+import 'package:bulletfinger/views/detect-peripherals-screen.dart';
+import 'package:bulletfinger/views/drawer.dart';
 
 void main() => runApp(new MyApp());
 
