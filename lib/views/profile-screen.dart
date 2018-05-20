@@ -6,15 +6,28 @@ import 'package:image_picker/image_picker.dart';
 
 class ProfileScreenState extends State<ProfileScreen> {
   final Profile profile;
+  Profile copy;
 
   ProfileScreenState(this.profile);
 
   @override
   void initState() {
     super.initState();
+    this.copy = new Profile(profile.name, profile.mail, profile.phone,
+        image: profile.image);
     this.profile.changes.forEach((record) {
       setState(() {});
     });
+    this.copy.changes.forEach((record) {
+      setState(() {});
+    });
+  }
+
+  void applyChanges() {
+    profile.name = copy.name;
+    profile.mail = copy.mail;
+    profile.phone = copy.phone;
+    profile.image = copy.image;
   }
 
   @override
@@ -31,9 +44,14 @@ class ProfileScreenState extends State<ProfileScreen> {
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new ProfilePicture(profile),
+            new ProfilePicture(copy),
           ],
         ),
+      ),
+      floatingActionButton: new FloatingActionButton(
+        onPressed: applyChanges,
+        tooltip: 'Aplicar cambios',
+        child: new Icon(Icons.done),
       ),
     );
   }
