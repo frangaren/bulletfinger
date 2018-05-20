@@ -2,54 +2,118 @@ import 'package:flutter/material.dart';
 import 'package:bulletfinger/models/profile.dart';
 import 'package:bulletfinger/views/drawer.dart';
 import 'package:bulletfinger/views/profile-picture.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ProfileScreenState extends State<ProfileScreen> {
   final Profile profile;
-  Profile copy;
+  Profile _copy;
+  Profile backup;
+  final scaffoldKey = new GlobalKey<ScaffoldState>();
+  final formKey = new GlobalKey<FormState>();
 
-  ProfileScreenState(this.profile);
+  ProfileScreenState(this.profile) {
+    this._copy = new Profile('dummy', 'dummy@dummy.dummy', '000000000',
+        image: profile.image);
+  }
 
   @override
   void initState() {
     super.initState();
-    this.copy = new Profile(profile.name, profile.mail, profile.phone,
-        image: profile.image);
-    this.profile.changes.forEach((record) {
-      setState(() {});
-    });
-    this.copy.changes.forEach((record) {
-      setState(() {});
-    });
   }
 
-  void applyChanges() {
-    profile.name = copy.name;
-    profile.mail = copy.mail;
-    profile.phone = copy.phone;
-    profile.image = copy.image;
+  void applyChanges(BuildContext context) {
+    final form = formKey.currentState;
+    backup = new Profile(profile.name, profile.mail, profile.phone,
+      image: profile.image);
+    profile.image = _copy.image;
+    form.save();
+    scaffoldKey.currentState.showSnackBar(new SnackBar(
+      content: new Text('Perfil actualizado'),
+      action: new SnackBarAction(
+          label: 'DESHACER',
+          onPressed: undoChanges,
+      ),
+    ));
+  }
+
+  void undoChanges() {
+    formKey.currentState.reset();
+    profile.name = backup.name;
+    profile.mail = backup.mail;
+    profile.phone = backup.phone;
+    profile.image = backup.image;
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      drawer: new MyDrawer(
-        profile,
-        selectedOption: '/profile',
-      ),
+      key: scaffoldKey,
       appBar: new AppBar(
         title: new Text('Perfil'),
       ),
       body: new Center(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            new ProfilePicture(copy),
-          ],
+        child: new Container(
+          margin: new EdgeInsets.symmetric(horizontal: 16.0),
+          child: new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Hero(
+                tag: 'ProfilePicture',
+                child: new Container(
+                  margin: new EdgeInsets.only(bottom: 12.0),
+                  child: new ProfilePicture(this._copy),
+                ),
+              ),
+              new Form(
+                key: formKey,
+                autovalidate: true,
+                child: new Wrap(
+                  children: <Widget>[
+                    new TextFormField(
+                      initialValue: profile.name,
+                      decoration: new InputDecoration(
+                          labelText: 'Usuario'
+                      ),
+                      onSaved: (value) => profile.name = value,
+                    ),
+                    new TextFormField(
+                      initialValue: profile.mail,
+                      decoration: new InputDecoration(
+                          labelText: 'Correo'
+                      ),
+                      validator: (value) {
+                        final RegExp mailRegex = new RegExp(r"^.+@.+\..+$");
+                        if (mailRegex.hasMatch(value)) {
+                          return null;
+                        } else {
+                          return 'Formato de correo inválido';
+                        }
+                      },
+                      onSaved: (value) => profile.mail = value,
+                    ),
+                    new TextFormField(
+                      initialValue: profile.phone,
+                      decoration: new InputDecoration(
+                          labelText: 'Teléfono'
+                      ),
+                      validator: (value) {
+                        final RegExp phoneRegex = new RegExp(r"^\d{9}$");
+                        if (phoneRegex.hasMatch(value)) {
+                          return null;
+                        } else {
+                          return 'Formato de teléfono inválido';
+                        }
+                      },
+                      onSaved: (value) => profile.phone = value,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: new FloatingActionButton(
-        onPressed: applyChanges,
+        onPressed: () => applyChanges(context),
         tooltip: 'Aplicar cambios',
         child: new Icon(Icons.done),
       ),
