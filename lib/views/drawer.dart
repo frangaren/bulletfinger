@@ -4,11 +4,13 @@ import 'package:bulletfinger/models/profile.dart';
 
 class MyDrawer extends StatelessWidget {
 
-  MyDrawer({Key key, this.selectedOption}) : super(key: key);
+  final Profile profile;
+
+  MyDrawer(this.profile,{Key key, this.selectedOption}) : super(key: key);
 
   final String selectedOption;
 
-  Widget build_entry(BuildContext context, {String route, String name,
+  Widget buildEntry(BuildContext context, {String route, String name,
     IconData icon}) {
     if (this.selectedOption == route) {
       return new ListTile(
@@ -42,43 +44,39 @@ class MyDrawer extends StatelessWidget {
     return new Drawer(
       child: new ListView(
         children: <Widget>[
-          new ProfileHeader(new Profile(
-              'frangaren',
-              'frangaren@mail.something',
-              '111222333'
-          )),
-          build_entry(
+          new ProfileHeader(this.profile),
+          buildEntry(
               context,
               route: '/home',
               name: 'Principal',
               icon: Icons.home
           ),
-          build_entry(
+          buildEntry(
               context,
               route: '/games',
               name: 'Partidas',
               icon: Icons.games
           ),
-          build_entry(
+          buildEntry(
               context,
               route: '/gallery',
               name: 'Galería',
               icon: Icons.video_library
           ),
-          build_entry(
+          buildEntry(
               context,
               route: '/friends',
               name: 'Amigos',
               icon: Icons.contacts
           ),
-          build_entry(
+          buildEntry(
               context,
               route: '/statistics',
               name: 'Estadísticas',
               icon: Icons.show_chart
           ),
           new Divider(),
-          build_entry(
+          buildEntry(
               context,
               route: '/help',
               name: 'Ayuda',

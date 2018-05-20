@@ -14,7 +14,7 @@ class Profile extends PropertyChangeNotifier {
   final PHONE = new Symbol('phone');
   final LASTGAME = new Symbol('lastGame');
 
-  Profile(String name, String mail, String phone, {ImageProvider image: null}) {
+  Profile(String name, String mail, String phone, {ImageProvider image}) {
     this.name = name;
     this.mail = mail;
     this.phone = phone;

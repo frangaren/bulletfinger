@@ -1,12 +1,20 @@
+import 'package:bulletfinger/models/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:bulletfinger/views/loading-screen.dart';
 import 'package:bulletfinger/views/detect-peripherals-screen.dart';
 import 'package:bulletfinger/views/drawer.dart';
+import 'package:bulletfinger/views/profile-screen.dart';
 
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+  final Profile profile = new Profile(
+      'frangaren',
+      'frangaren@mail.something',
+      '111222333'
+  );
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -15,7 +23,8 @@ class MyApp extends StatelessWidget {
         '/' : (BuildContext context) => new LoadingScreen(),
         '/detect-peripherals':
             (BuildContext context) => new DetectPeripheralsScreen(),
-        '/home' : (BuildContext context) => new MyHomePage(title: 'main'),
+        '/home' : (BuildContext context) => new MyHomePage(profile, title: 'main'),
+        '/profile': (BuildContext context) => new ProfileScreen(profile),
       },
       theme: new ThemeData(
         // This is the theme of your application.
@@ -36,7 +45,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  final Profile profile;
+
+  MyHomePage(this.profile, {Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -50,11 +61,14 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _MyHomePageState createState() => new _MyHomePageState(profile);
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Profile profile;
   int _counter = 0;
+
+  _MyHomePageState(this.profile);
 
   void _incrementCounter() {
     setState(() {
@@ -77,6 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return new Scaffold(
       drawer: new MyDrawer(
+        profile,
         selectedOption: '/home',
       ),
       appBar: new AppBar(

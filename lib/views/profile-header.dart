@@ -1,9 +1,8 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:bulletfinger/models/profile.dart';
 
 class ProfileHeaderState extends State<ProfileHeader> {
-  Profile profile;
+  final Profile profile;
 
   ProfileHeaderState(this.profile);
 
@@ -30,12 +29,13 @@ class ProfileHeaderState extends State<ProfileHeader> {
           ),
         ),
       ),
+      onDetailsPressed: () => Navigator.pushNamed(context, '/profile'),
     );
   }
 }
 
 class ProfileHeader extends StatefulWidget {
-  Profile profile;
+  final Profile profile;
 
   ProfileHeader(this.profile);
 
