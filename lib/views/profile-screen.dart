@@ -5,27 +5,27 @@ import 'package:bulletfinger/views/profile-picture.dart';
 
 class ProfileScreenState extends State<ProfileScreen> {
   final Profile profile;
-  Profile _copy;
   Profile backup;
   final scaffoldKey = new GlobalKey<ScaffoldState>();
   final formKey = new GlobalKey<FormState>();
+  final pictureKey = new GlobalKey<ProfilePictureState>();
+  ImageProvider picture;
 
-  ProfileScreenState(this.profile) {
-    this._copy = new Profile('dummy', 'dummy@dummy.dummy', '000000000',
-        image: profile.image);
-  }
+  ProfileScreenState(this.profile);
 
   @override
   void initState() {
     super.initState();
+    picture = this.profile.image;
   }
 
   void applyChanges(BuildContext context) {
     final form = formKey.currentState;
     backup = new Profile(profile.name, profile.mail, profile.phone,
       image: profile.image);
-    profile.image = _copy.image;
+    profile.image = pictureKey.currentState.picture;
     form.save();
+    //Navigator.pop(context); // <-- Go back
     scaffoldKey.currentState.showSnackBar(new SnackBar(
       content: new Text('Perfil actualizado'),
       action: new SnackBarAction(
@@ -60,7 +60,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                 tag: 'ProfilePicture',
                 child: new Container(
                   margin: new EdgeInsets.only(bottom: 12.0),
-                  child: new ProfilePicture(this._copy),
+                  child: new ProfilePicture(this.profile.image, true, key: pictureKey),
                 ),
               ),
               new Form(

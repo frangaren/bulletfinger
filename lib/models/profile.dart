@@ -1,18 +1,12 @@
 import 'package:flutter/painting.dart';
 import 'package:observable/observable.dart';
 
-class Profile extends PropertyChangeNotifier {
+class Profile {
   ImageProvider _image;
   String _name;
   String _mail;
   String _phone;
   DateTime _lastGame;
-
-  final IMAGE = new Symbol('image');
-  final NAME = new Symbol('name');
-  final MAIL = new Symbol('mail');
-  final PHONE = new Symbol('phone');
-  final LASTGAME = new Symbol('lastGame');
 
   Profile(String name, String mail, String phone, {ImageProvider image}) {
     this.name = name;
@@ -30,7 +24,7 @@ class Profile extends PropertyChangeNotifier {
   }
 
   set image(ImageProvider value) {
-    this._image = notifyPropertyChange(IMAGE, this._image, value);
+    this._image = value;
   }
 
   get name {
@@ -38,7 +32,7 @@ class Profile extends PropertyChangeNotifier {
   }
 
   set name(String value) {
-    this._name = notifyPropertyChange(NAME, this._name, value.trim());
+    this._name = value.trim();
   }
 
   get mail {
@@ -48,7 +42,7 @@ class Profile extends PropertyChangeNotifier {
   set mail(String value) {
     final RegExp mailRegex = new RegExp(r"^.+@.+\..+$");
     if (mailRegex.hasMatch(value)) {
-      this._mail = notifyPropertyChange(MAIL, this._mail, value.trim());
+      this._mail = value.trim();
     } else {
       throw new Exception('Invalid mail');
     }
@@ -61,7 +55,7 @@ class Profile extends PropertyChangeNotifier {
   set phone(String value) {
     final RegExp phoneRegex = new RegExp(r"^\d{9}$");
     if (phoneRegex.hasMatch(value)) {
-      this._phone = notifyPropertyChange(PHONE, this._phone, value.trim());
+      this._phone = value.trim();
     } else {
       throw new Exception('Invalid phone');
     }
@@ -73,7 +67,7 @@ class Profile extends PropertyChangeNotifier {
 
   void updateLastGame() {
     DateTime value = new DateTime.now();
-    this._lastGame = notifyPropertyChange(LASTGAME, this._lastGame, value);
+    this._lastGame = value;
   }
 
 }

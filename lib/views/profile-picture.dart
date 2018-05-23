@@ -3,15 +3,18 @@ import 'package:bulletfinger/models/profile.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfilePictureState extends State<ProfilePicture> {
-  final Profile profile;
+  ImageProvider _picture;
+  bool _editable;
 
-  ProfilePictureState(this.profile);
+  ProfilePictureState(this._picture, this._editable);
 
-  @override
-  void initState() {
-    super.initState();
-    this.profile.changes.forEach((record) {
-      setState(() {});
+  get picture {
+    return _picture;
+  }
+
+  set picture(ImageProvider value) {
+    setState(() {
+      _picture = value;
     });
   }
 
@@ -28,7 +31,7 @@ class ProfilePictureState extends State<ProfilePicture> {
                   onTap: () {
                     ImagePicker.pickImage(source: ImageSource.camera).then((file) {
                       if (file != null) {
-                        profile.image = new FileImage(file);
+                        picture = new FileImage(file);
                       }
                       Navigator.pop(context);
                     });
@@ -40,7 +43,7 @@ class ProfilePictureState extends State<ProfilePicture> {
                   onTap: () {
                     ImagePicker.pickImage(source: ImageSource.gallery).then((file) {
                       if (file != null) {
-                        profile.image = new FileImage(file);
+                        picture = new FileImage(file);
                       }
                       Navigator.pop(context);
                     });
@@ -62,22 +65,27 @@ class ProfilePictureState extends State<ProfilePicture> {
           shape: BoxShape.circle,
           image: new DecorationImage(
             fit: BoxFit.fill,
-            image: profile.image,
+            image: picture,
           ),
         ),
       ),
-      onTap: () => changePicture(context),
+      onTap: () {
+        if (_editable) {
+          changePicture(context);
+        }
+      },
     );
   }
 }
 
 class ProfilePicture extends StatefulWidget {
-  final Profile profile;
+  final ImageProvider picture;
+  final bool editable;
 
-  ProfilePicture (this.profile);
+  ProfilePicture (this.picture, this.editable, {Key key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return new ProfilePictureState(profile);
+    return new ProfilePictureState(picture, editable);
   }
 }
