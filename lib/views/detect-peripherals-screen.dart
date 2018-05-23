@@ -19,7 +19,7 @@ class _DetectPeripheralsScreenState extends State<DetectPeripheralsScreen> {
     super.deactivate();
   }
 
-  void navigate_to_home(BuildContext context) {
+  void navigateToHome(BuildContext context) {
     Navigator.pushReplacementNamed(context, '/home');
   }
 
@@ -28,7 +28,7 @@ class _DetectPeripheralsScreenState extends State<DetectPeripheralsScreen> {
     Function callback;
     if (!this.detecting) {
       label = 'CONTINUAR';
-      callback = () => navigate_to_home(context);
+      callback = () => navigateToHome(context);
     }
     return new RaisedButton(
       child: new Text(label),

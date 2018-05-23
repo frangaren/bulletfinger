@@ -1,5 +1,4 @@
 import 'package:flutter/painting.dart';
-import 'package:observable/observable.dart';
 
 class Profile {
   ImageProvider _image;

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:bulletfinger/models/profile.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfilePictureState extends State<ProfilePicture> {

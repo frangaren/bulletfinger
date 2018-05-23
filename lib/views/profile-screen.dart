@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:bulletfinger/models/profile.dart';
-import 'package:bulletfinger/views/drawer.dart';
 import 'package:bulletfinger/views/profile-picture.dart';
 
 class ProfileScreenState extends State<ProfileScreen> {
