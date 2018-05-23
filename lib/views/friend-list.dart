@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bulletfinger/models/profile.dart';
-import 'package:bulletfinger/views/drawer.dart';
+import 'package:bulletfinger/views/friend.dart';
 
 class FriendList extends StatefulWidget {
   final List<Profile> friends;
@@ -20,12 +20,12 @@ class FriendListState extends State<FriendList> {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> friendWidgets = new List();
+    friends.forEach((profile) {
+      friendWidgets.add(new Friend(profile));
+    });
     return new ListView(
-      children: <Widget>[
-        new ListTile(
-          title: new Text('Placeholder'),
-        )
-      ],
+      children: friendWidgets,
     );
   }
 }

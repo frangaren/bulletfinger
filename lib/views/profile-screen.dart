@@ -59,7 +59,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                 tag: 'ProfilePicture',
                 child: new Container(
                   margin: new EdgeInsets.only(bottom: 12.0),
-                  child: new ProfilePicture(this.profile.image, true, key: pictureKey),
+                  child: new ProfilePicture(this.profile.image, true, radius: 100.0, key: pictureKey),
                 ),
               ),
               new Form(

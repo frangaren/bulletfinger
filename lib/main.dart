@@ -18,6 +18,14 @@ class MyApp extends StatelessWidget {
 
   final List<Profile> friends = new List<Profile>();
 
+  MyApp() : super() {
+    friends.add(new Profile(
+      'friend',
+      'friend@gmail.com',
+      '111222333'
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
