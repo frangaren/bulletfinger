@@ -16,6 +16,8 @@ class MyApp extends StatelessWidget {
       '111222333'
   );
 
+  final List<Profile> friends = new List<Profile>();
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
             (BuildContext context) => new DetectPeripheralsScreen(),
         '/home' : (BuildContext context) => new MyHomePage(profile, title: 'main'),
         '/profile': (BuildContext context) => new ProfileScreen(profile),
-        '/friends': (BuildContext context) => new FriendListScreen(profile),
+        '/friends': (BuildContext context) => new FriendListScreen(profile, friends),
       },
       theme: new ThemeData(
         // This is the theme of your application.
