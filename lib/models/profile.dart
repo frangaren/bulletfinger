@@ -7,7 +7,7 @@ class Profile {
   String _phone;
   DateTime _lastGame;
 
-  Profile(String name, String mail, String phone, {ImageProvider image}) {
+  Profile(String name, String mail, String phone, {ImageProvider image, DateTime lastGame}) {
     this.name = name;
     this.mail = mail;
     this.phone = phone;
@@ -15,6 +15,11 @@ class Profile {
       this.image = AssetImage('assets/blank-profile.png');
     } else {
       this.image = image;
+    }
+    if (lastGame == null) {
+      this._lastGame = new DateTime.now();
+    } else {
+      this._lastGame = lastGame;
     }
   }
 
