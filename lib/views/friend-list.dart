@@ -22,7 +22,14 @@ class FriendListState extends State<FriendList> {
   Widget build(BuildContext context) {
     List<Widget> friendWidgets = new List();
     friends.forEach((profile) {
-      friendWidgets.add(new Friend(profile));
+      friendWidgets.add(new Friend(
+        profile,
+        onDelete: (friend) {
+          setState(() {
+            friends.remove(friend);
+          });
+        },
+      ));
     });
     return new ListView(
       children: friendWidgets,

@@ -5,8 +5,9 @@ import 'package:intl/intl.dart';
 
 class Friend extends StatelessWidget {
   final Profile friend;
+  final Function onDelete;
 
-  Friend(this.friend, {Key key, Function onDelete}) : super(key: key);
+  Friend(this.friend, {Key key, this.onDelete}) : super(key: key);
 
   String _lastGame() {
     DateTime date = friend.lastGame;
@@ -23,7 +24,10 @@ class Friend extends StatelessWidget {
       ),
       title: new Text(friend.name),
       subtitle: new Text(_lastGame()),
-      trailing: new Icon(Icons.delete),
+      trailing: new GestureDetector(
+        child: new Icon(Icons.delete),
+        onTap: () => onDelete(friend),
+      )
     );
   }
 }
