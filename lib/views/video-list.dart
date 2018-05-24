@@ -7,13 +7,27 @@ class VideoListState extends State<VideoList> {
 
   VideoListState(this.videos);
 
+  void remove(BuildContext context, model.Video video) {
+    setState(() => this.videos.remove(video));
+    Scaffold.of(context).showSnackBar(new SnackBar(
+      content: new Text('Video eliminado'),
+      action: new SnackBarAction(
+          label: 'DESHACER',
+          onPressed: () => setState(() => this.videos.add(video)),
+      ),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return new GridView.count(
         crossAxisCount: 2,
         padding: EdgeInsets.all(16.0),
         children: new List.generate(videos.length, (index) {
-          return new Video(videos[index]);
+          return new Video(
+            videos[index],
+            delete: (video) => remove(context, video),
+          );
         })
     );
   }

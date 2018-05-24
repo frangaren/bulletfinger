@@ -65,17 +65,24 @@ class FriendListState extends State<FriendList> {
     }
   }
 
+  void deleteFriend(BuildContext context, Profile friend) {
+    setState(() => this.friends.remove(friend));
+    Scaffold.of(context).showSnackBar(new SnackBar(
+      content: new Text('Amigo eliminado'),
+      action: new SnackBarAction(
+        label: 'DESHACER',
+        onPressed: () => setState(() => this.friends.add(friend)),
+      ),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     List<Widget> friendWidgets = new List();
     friends.forEach((profile) {
       friendWidgets.add(new Friend(
         profile,
-        onDelete: (friend) {
-          setState(() {
-            friends.remove(friend);
-          });
-        },
+        onDelete: (friend) => deleteFriend(context, friend),
       ));
     });
     return new ListView(
