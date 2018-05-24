@@ -5,6 +5,7 @@ import 'package:bulletfinger/views/detect-peripherals-screen.dart';
 import 'package:bulletfinger/views/drawer.dart';
 import 'package:bulletfinger/views/profile-screen.dart';
 import 'package:bulletfinger/views/friend-list-screen.dart';
+import 'package:bulletfinger/views/gallery-screen.dart';
 
 void main() => runApp(new MyApp());
 
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         '/home' : (BuildContext context) => new MyHomePage(profile, title: 'main'),
         '/profile': (BuildContext context) => new ProfileScreen(profile),
         '/friends': (BuildContext context) => new FriendListScreen(profile, friends),
+        '/gallery': (BuildContext context) => new Gallery(profile),
       },
       theme: new ThemeData(
         // This is the theme of your application.
