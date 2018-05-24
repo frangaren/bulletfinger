@@ -21,11 +21,17 @@ class Gallery extends StatelessWidget {
       ),
       body: new GridView.count(
         crossAxisCount: 2,
+        padding: EdgeInsets.all(16.0),
         children: new List.generate(100, (index) {
           return new Center(
-            child: new Text(
-              'Item $index',
-              style: Theme.of(context).textTheme.headline,
+            child: new Card(
+              child: new AspectRatio(
+                aspectRatio: 1.0,
+                child: new Text(
+                  'Item $index',
+                  style: Theme.of(context).textTheme.headline,
+                ),
+              ),
             ),
           );
         }),
