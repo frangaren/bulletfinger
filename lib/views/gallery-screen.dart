@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:bulletfinger/models/profile.dart';
 import 'package:bulletfinger/views/drawer.dart';
 import 'package:bulletfinger/views/video-list.dart';
+import 'package:bulletfinger/models/video.dart' as model;
 
 class Gallery extends StatelessWidget {
   final Profile profile;
+  final List<model.Video> videos;
 
-  Gallery(this.profile);
+  Gallery(this.profile, this.videos);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class Gallery extends StatelessWidget {
         // the App.build method, and use it to set our appbar title.
         title: new Text('Galería'),
       ),
-      body: new VideoList(),
+      body: new VideoList(this.videos),
     );
   }
 
