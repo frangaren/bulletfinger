@@ -6,11 +6,14 @@ import 'package:bulletfinger/views/friend-list.dart';
 class FriendListScreen extends StatelessWidget {
   final Profile profile;
   final List<Profile> friends;
+  final GlobalKey<FriendListState> friendListKey = new GlobalKey<FriendListState>();
+  final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
 
   FriendListScreen(this.profile, this.friends, {Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      key: scaffoldKey,
       drawer: new MyDrawer(
         profile,
         selectedOption: '/friends',
@@ -23,10 +26,10 @@ class FriendListScreen extends StatelessWidget {
       body: new Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: new FriendList(friends),
+        child: new FriendList(scaffoldKey, friends, key: friendListKey),
       ),
       floatingActionButton: new FloatingActionButton(
-        onPressed: null,
+        onPressed: () => friendListKey.currentState.addFriend(context),
         tooltip: 'Añadir amigo',
         child: new Icon(Icons.person_add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
