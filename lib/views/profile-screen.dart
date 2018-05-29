@@ -70,6 +70,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                     new TextFormField(
                       initialValue: profile.name,
                       decoration: new InputDecoration(
+                          icon: new Icon(Icons.person),
                           labelText: 'Usuario'
                       ),
                       onSaved: (value) => profile.name = value,
@@ -77,6 +78,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                     new TextFormField(
                       initialValue: profile.mail,
                       decoration: new InputDecoration(
+                          icon: new Icon(Icons.mail),
                           labelText: 'Correo'
                       ),
                       validator: (value) {
@@ -92,6 +94,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                     new TextFormField(
                       initialValue: profile.phone,
                       decoration: new InputDecoration(
+                          icon: new Icon (Icons.phone),
                           labelText: 'Teléfono'
                       ),
                       validator: (value) {

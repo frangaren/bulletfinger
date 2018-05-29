@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bulletfinger/views/video.dart';
 import 'package:bulletfinger/models/video.dart' as model;
+import 'package:share/share.dart';
 
 class VideoListState extends State<VideoList> {
   List<model.Video> videos;
@@ -18,6 +19,10 @@ class VideoListState extends State<VideoList> {
     ));
   }
 
+  void share(BuildContext context, model.Video video) {
+    //TODO
+  }
+
   @override
   Widget build(BuildContext context) {
     return new GridView.count(
@@ -27,6 +32,7 @@ class VideoListState extends State<VideoList> {
           return new Video(
             videos[index],
             delete: (video) => remove(context, video),
+            share: (video) => share(context, video),
           );
         })
     );

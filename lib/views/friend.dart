@@ -22,7 +22,13 @@ class Friend extends StatelessWidget {
           friend.image,
           false
       ),
-      title: new Text(friend.name),
+      title: new Text(
+          friend.name,
+        style: new TextStyle(
+          color: Theme.of(context).accentColor,
+          fontWeight: FontWeight.bold
+        ),
+      ),
       subtitle: new Text(_lastGame()),
       trailing: new GestureDetector(
         child: new Icon(Icons.delete),

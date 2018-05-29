@@ -32,7 +32,8 @@ class FriendListState extends State<FriendList> {
           content: new TextField(
             controller: controller,
             decoration: new InputDecoration(
-              hintText: 'Nombre',
+              icon: new Icon(Icons.person),
+              labelText: 'Nombre',
             ),
           ),
           actions: <Widget>[
