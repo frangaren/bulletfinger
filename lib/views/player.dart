@@ -16,10 +16,59 @@ class PlayerState extends State<Player> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
-    return new Text('Hello World!');
+    return new Column(
+      children: <Widget>[
+        new AspectRatio(
+          aspectRatio: 1.0,
+          child:new Container(
+            child: new GestureDetector(
+              child: new Icon(
+                Icons.play_arrow,
+                color: Colors.white,
+                size: 128.0,
+              ),
+              onTap: () {
+              },
+            ),
+            decoration: new BoxDecoration(
+              image: new DecorationImage(
+                fit: BoxFit.fitHeight,
+                alignment: new Alignment(0.0, 0.0),
+                image: video.image
+              )
+            ),
+          ),
+        ),
+        new Row(
+          children: <Widget>[
+            new Icon(
+              Icons.play_arrow,
+              color: new Color(0x80000000),
+              size: 48.0,
+            ),
+            new Expanded(
+              child: new Slider(
+                value: _currentTime,
+                onChanged: (double value) {
+                  setState(() {
+                    _currentTime = value;
+                  });
+                },
+                min: 0.0,
+                max: _totalTime,
+              ),
+            ),
+            new Icon(
+              Icons.fullscreen,
+              color: new Color(0x80000000),
+              size: 48.0,
+            )
+          ],
+        ),
+      ],
+    );
   }
 }
 

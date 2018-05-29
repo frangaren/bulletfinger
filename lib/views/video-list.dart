@@ -10,13 +10,15 @@ class VideoListState extends State<VideoList> {
 
   void remove(BuildContext context, model.Video video) {
     setState(() => this.videos.remove(video));
-    Scaffold.of(context).showSnackBar(new SnackBar(
-      content: new Text('Video eliminado'),
-      action: new SnackBarAction(
+    if (Scaffold.of(context, nullOk: true) != null) {
+      Scaffold.of(context).showSnackBar(new SnackBar(
+        content: new Text('Video eliminado'),
+        action: new SnackBarAction(
           label: 'DESHACER',
           onPressed: () => setState(() => this.videos.add(video)),
-      ),
-    ));
+        ),
+      ));
+    }
   }
 
   void share(BuildContext context, model.Video video) {
@@ -26,7 +28,11 @@ class VideoListState extends State<VideoList> {
   void play(BuildContext context, model.Video video) {
     Navigator.of(context).push(new MaterialPageRoute(
         builder: (BuildContext context) {
-          return new PlayScreen(video);
+          return new PlayScreen(
+            video,
+            delete: (v) => remove(context, v),
+            share: (v) => share(context, v),
+          );
         },
     ));
   }
