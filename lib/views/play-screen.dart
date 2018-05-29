@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:bulletfinger/models/video.dart';
+import 'package:bulletfinger/views/player.dart';
 
 class PlayScreen extends StatelessWidget {
-  Video video;
-  Function delete;
-  Function share;
+  final Video video;
+  final Function delete;
+  final Function share;
 
   PlayScreen (this.video, {this.delete, this.share});
 
@@ -16,7 +17,7 @@ class PlayScreen extends StatelessWidget {
         // the App.build method, and use it to set our appbar title.
         title: new Text('Ver vídeo'),
       ),
-      body: new Text('Hello World!'),
+      body: new Player(video),
     );
     /*return new Center(
       child: new Card(
