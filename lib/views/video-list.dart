@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bulletfinger/views/video.dart';
 import 'package:bulletfinger/models/video.dart' as model;
-import 'package:share/share.dart';
+import 'package:bulletfinger/views/play-screen.dart';
 
 class VideoListState extends State<VideoList> {
   List<model.Video> videos;
@@ -23,6 +23,14 @@ class VideoListState extends State<VideoList> {
     //TODO
   }
 
+  void play(BuildContext context, model.Video video) {
+    Navigator.of(context).push(new MaterialPageRoute(
+        builder: (BuildContext context) {
+          return new PlayScreen(video);
+        },
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return new GridView.count(
@@ -33,6 +41,7 @@ class VideoListState extends State<VideoList> {
             videos[index],
             delete: (video) => remove(context, video),
             share: (video) => share(context, video),
+            play: (video) => play(context, video),
           );
         })
     );
