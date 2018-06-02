@@ -5,8 +5,9 @@ import 'package:bulletfinger/views/view-game-screen.dart';
 class Game extends StatelessWidget{
   final model.Game game;
   final List<model.Game> playerGames;
+  final Function onUpdate;
 
-  Game(this.game, this.playerGames, {Key key}) : super(key: key);
+  Game(this.game, this.playerGames, {this.onUpdate, Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,9 @@ class Game extends StatelessWidget{
           builder: (BuildContext context) {
             return new ViewGameScreen(game, playerGames);
           },
-        ));
+        )).then((_) {
+          if (onUpdate != null) onUpdate();
+        });
       },
     );
   }
