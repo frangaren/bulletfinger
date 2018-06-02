@@ -70,6 +70,12 @@ class Game {
    return format.format(_date);
  }
 
+ get dateTimeString {
+   DateFormat format = new DateFormat("EEEE', 'd' de 'MMMM' de 'y' a las 'HH':'mm", "es_ES");
+   String string = format.format(_date);
+   return string[0].toUpperCase() + string.substring(1);
+ }
+
  void _updateLocationName() {
    var provider = new geocoding.GoogleMapsGeocoding(GOOGLE_API_KEY);
    provider.searchByLocation(geoLocation, language: 'es-ES').then(

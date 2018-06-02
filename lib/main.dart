@@ -7,6 +7,7 @@ import 'package:bulletfinger/views/friend-list-screen.dart';
 import 'package:bulletfinger/views/gallery-screen.dart';
 import 'package:bulletfinger/views/statistics-screen.dart';
 import 'package:bulletfinger/views/home-screen.dart';
+import 'package:bulletfinger/views/games-screen.dart';
 import 'package:bulletfinger/models/video.dart';
 import 'package:bulletfinger/models/statistics.dart';
 import 'package:bulletfinger/models/game.dart';
@@ -64,6 +65,7 @@ class MyApp extends StatelessWidget {
         '/friends': (BuildContext context) => new FriendListScreen(profile, friends),
         '/gallery': (BuildContext context) => new Gallery(profile, videos),
         '/statistics': (BuildContext context) => new StatisticsScreen(profile, statistics),
+        '/games': (BuildContext context) => new GamesScreen(profile, games, playerGames),
       },
       theme: new ThemeData(
         // This is the theme of your application.

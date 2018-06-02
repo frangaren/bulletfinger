@@ -13,7 +13,6 @@ class ViewGameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var provider = new StaticMapProvider(GOOGLE_API_KEY);
     MapView.setApiKey(GOOGLE_API_KEY);
-    MapView map = new MapView();
     Widget action;
     if (playerGames.contains(game)) {
       action = new FlatButton(
