@@ -16,7 +16,7 @@ class Model {
 
   factory Model.randomize([int seed]) {
     List<Game> games = new List();
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 10; i++) {
       games.add(new Game.randomize(seed));
     }
     Profile me = new Profile.randomize(seed: seed);

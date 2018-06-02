@@ -150,7 +150,7 @@ packages:
       name: image_picker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.1"
+    version: "0.4.4"
   intl:
     dependency: "direct main"
     description:
@@ -283,7 +283,7 @@ packages:
       name: share
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.0"
+    version: "0.5.1"
   shelf:
     dependency: transitive
     description:
