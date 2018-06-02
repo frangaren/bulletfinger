@@ -6,7 +6,9 @@ import 'package:bulletfinger/views/drawer.dart';
 import 'package:bulletfinger/views/profile-screen.dart';
 import 'package:bulletfinger/views/friend-list-screen.dart';
 import 'package:bulletfinger/views/gallery-screen.dart';
+import 'package:bulletfinger/views/statistics-screen.dart';
 import 'package:bulletfinger/models/video.dart';
+import 'package:bulletfinger/models/statistics.dart';
 
 void main() => runApp(new MyApp());
 
@@ -38,6 +40,8 @@ class MyApp extends StatelessWidget {
     ),
   ];
 
+  final Statistics statistics = Statistics.Randomize();
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -50,6 +54,7 @@ class MyApp extends StatelessWidget {
         '/profile': (BuildContext context) => new ProfileScreen(profile),
         '/friends': (BuildContext context) => new FriendListScreen(profile, friends),
         '/gallery': (BuildContext context) => new Gallery(profile, videos),
+        '/statistics': (BuildContext context) => new StatisticsScreen(profile, statistics),
       },
       theme: new ThemeData(
         // This is the theme of your application.

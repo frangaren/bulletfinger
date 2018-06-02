@@ -1,5 +1,7 @@
 import 'dart:math';
 
+//https://medium.com/flutter-io/beautiful-animated-charts-for-flutter-164940780b8c
+
 class Statistics {
   List<int> _wins;
   List<int> _games;
@@ -150,5 +152,17 @@ class Statistics {
 
   double get totalDistance {
     return distances.fold(0.0, (double acc, double e) => acc + e);
+  }
+
+  List<double> get playTimes {
+    List<double> playTimes = new List(games.length);
+    for (int i = 0; i < games.length; i++) {
+      playTimes[i] = games[i].toDouble() * 0.5;
+    }
+    return playTimes;
+  }
+
+  double get totalPlayTime {
+    return playTimes.fold(0.0, (double acc, double e) => acc + e);
   }
 }
