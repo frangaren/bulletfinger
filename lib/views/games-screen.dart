@@ -3,6 +3,7 @@ import 'package:bulletfinger/models/profile.dart';
 import 'package:bulletfinger/models/game.dart';
 import 'package:bulletfinger/views/drawer.dart';
 import 'package:bulletfinger/views/my-games.dart';
+import 'package:bulletfinger/views/search-games.dart';
 
 class GamesScreen extends StatelessWidget{
   final Profile profile;
@@ -32,7 +33,7 @@ class GamesScreen extends StatelessWidget{
         body: new TabBarView(
           children: [
             new MyGames(playerGames),
-            new Text('Buscar'),
+            new SearchGames(playerGames, games)
           ]
         ),
         floatingActionButton: new FloatingActionButton(

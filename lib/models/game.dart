@@ -55,22 +55,22 @@ class Game {
    geoLocation = new geocoding.Location(value.latitude, value.longitude);
  }
 
- get locationName {
+ String get locationName {
    return this._locationName;
  }
 
- get dateString {
+ String get dateString {
    DateFormat format = new DateFormat("EEEE', 'd' de 'MMMM' de 'y", "es_ES");
    String string = format.format(_date);
    return string[0].toUpperCase() + string.substring(1);
  }
 
- get timeString {
+ String get timeString {
    DateFormat format = new DateFormat("HH':'mm");
    return format.format(_date);
  }
 
- get dateTimeString {
+ String get dateTimeString {
    DateFormat format = new DateFormat("EEEE', 'd' de 'MMMM' de 'y' a las 'HH':'mm", "es_ES");
    String string = format.format(_date);
    return string[0].toUpperCase() + string.substring(1);

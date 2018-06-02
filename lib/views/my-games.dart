@@ -4,7 +4,6 @@ import 'package:bulletfinger/views/game.dart';
 
 class MyGames extends StatelessWidget{
   final List<model.Game> playerGames;
-  final List<model.Game> games;
 
   MyGames(this.playerGames, {Key key}) : super(key: key);
 
