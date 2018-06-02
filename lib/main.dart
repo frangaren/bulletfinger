@@ -7,6 +7,7 @@ import 'package:bulletfinger/views/gallery-screen.dart';
 import 'package:bulletfinger/views/statistics-screen.dart';
 import 'package:bulletfinger/views/home-screen.dart';
 import 'package:bulletfinger/views/games-screen.dart';
+import 'package:bulletfinger/views/wait-player-screen.dart';
 import 'package:bulletfinger/models/model.dart';
 
 void main() => runApp(new MyApp());
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         '/gallery': (BuildContext context) => new Gallery(model.me, model.videos),
         '/statistics': (BuildContext context) => new StatisticsScreen(model.me, model.statistics),
         '/games': (BuildContext context) => new GamesScreen(model.me, model.games, model.myGames),
+        '/wait_players': (BuildContext context) => new WaitPlayersScreen(),
       },
       theme: new ThemeData(
         // This is the theme of your application.

@@ -43,7 +43,9 @@ class GameNotification extends StatelessWidget {
                     ),
                   ),
                   new FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/wait_players');
+                    },
                     child: new Text(
                       'EMPEZAR',
                       style: TextStyle(
