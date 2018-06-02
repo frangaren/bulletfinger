@@ -1,4 +1,5 @@
 import 'package:flutter/painting.dart';
+import 'dart:math';
 
 class Profile {
   ImageProvider _image;
@@ -21,6 +22,43 @@ class Profile {
     } else {
       this._lastGame = lastGame;
     }
+  }
+
+  factory Profile.randomize({int seed, String name}) {
+    const List<String> NAMES = [
+      'Francisco',
+      'Ricardo',
+      'Carlos',
+      'Marco',
+      'Angel',
+      'Jose',
+      'Alvaro',
+      'Roberto',
+      'Nuria',
+      'Sandra'
+    ];
+    const List<String> MAIL_DOMAINS = [
+      '@gmail.com',
+      '@hotmail.com',
+      '@outlook.com',
+      '@usal.es',
+    ];
+    Random random = new Random(seed);
+    int seconds = random.nextInt(60);
+    int minutes = random.nextInt(60);
+    int hours = random.nextInt(60);
+    int days = random.nextInt(7);
+    DateTime date = (new DateTime.now()).subtract(new Duration(
+      seconds: seconds,
+      minutes: minutes,
+      hours: hours,
+      days: days,
+    ));
+    String finalName = name ?? NAMES[random.nextInt(NAMES.length)];
+    String mail = finalName.toLowerCase() + MAIL_DOMAINS[random.nextInt(MAIL_DOMAINS.length)];
+    String phone = (random.nextInt(999999999 - 100000000 + 1) + 100000000).toString();
+    String image = 'assets/samples/image' + random.nextInt(10).toString() + '.jpg';
+    return new Profile(finalName, mail, phone, lastGame: date, image: AssetImage(image));
   }
 
   get image {

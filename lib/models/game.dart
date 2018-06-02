@@ -2,6 +2,7 @@ import 'package:map_view/location.dart' as mapview;
 import 'package:google_maps_webservice/geocoding.dart' as geocoding;
 import 'package:bulletfinger/config.dart';
 import 'package:intl/intl.dart';
+import 'dart:math';
 
 class Game {
  DateTime _date;
@@ -14,6 +15,23 @@ class Game {
      this._date = new DateTime.now();
    }
    this._updateLocationName();
+ }
+
+ factory Game.randomize([int seed]) {
+   Random random = new Random(seed);
+   int seconds = random.nextInt(60);
+   int minutes = random.nextInt(60);
+   int hours = random.nextInt(24);
+   int days = random.nextInt(7);
+   DateTime date = (new DateTime.now()).add(new Duration(
+     seconds: seconds,
+     minutes: minutes,
+     hours: hours,
+     days: days,
+   ));
+   double latitude = 40.9634372 + (random.nextDouble() - 0.5) * 2.0 * 1.0;
+   double longitude = -5.6867217 + (random.nextDouble() - 0.5) * 2.0 * 3.0;
+   return new Game(date, latitude, longitude);
  }
 
  bool isAboutToStart() {

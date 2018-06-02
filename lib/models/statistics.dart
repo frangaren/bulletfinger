@@ -11,7 +11,7 @@ class Statistics {
 
   Statistics(this._wins, this._games, this._landedShoots, this._shoots, this._distances);
 
-  static Statistics randomize([int seed]) {
+  factory Statistics.randomize([int seed]) {
     Random random = new Random(seed);
     List<int> games = new List(13);
     for (int i = 0; i < 13; i++) {

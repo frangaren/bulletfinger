@@ -39,6 +39,16 @@ flutter:
     - assets/instructions.png
     - assets/blank-profile.png
     - assets/paintball.jpg
+    - assets/samples/image0.jpg
+    - assets/samples/image1.jpg
+    - assets/samples/image2.jpg
+    - assets/samples/image3.jpg
+    - assets/samples/image4.jpg
+    - assets/samples/image5.jpg
+    - assets/samples/image7.jpg
+    - assets/samples/image8.jpg
+    - assets/samples/image9.jpg
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 

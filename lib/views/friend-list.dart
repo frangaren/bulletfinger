@@ -43,10 +43,8 @@ class FriendListState extends State<FriendList> {
             ),
             new FlatButton(
               onPressed: () {
-                Navigator.of(context).pop(new Profile(
-                    controller.text,
-                    controller.text + '@mail.com',
-                    '111222333'
+                Navigator.of(context).pop(new Profile.randomize(
+                    name: controller.text
                 ));
               },
               child: new Text('AÑADIR'),

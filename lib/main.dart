@@ -1,4 +1,3 @@
-import 'package:bulletfinger/models/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:bulletfinger/views/loading-screen.dart';
 import 'package:bulletfinger/views/detect-peripherals-screen.dart';
@@ -8,49 +7,12 @@ import 'package:bulletfinger/views/gallery-screen.dart';
 import 'package:bulletfinger/views/statistics-screen.dart';
 import 'package:bulletfinger/views/home-screen.dart';
 import 'package:bulletfinger/views/games-screen.dart';
-import 'package:bulletfinger/models/video.dart';
-import 'package:bulletfinger/models/statistics.dart';
-import 'package:bulletfinger/models/game.dart';
+import 'package:bulletfinger/models/model.dart';
 
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  final Profile profile = new Profile(
-      'frangaren',
-      'frangaren@mail.something',
-      '111222333'
-  );
-
-  final List<Profile> friends = <Profile>[
-    new Profile(
-        'friend',
-        'friend@gmail.com',
-        '111222333'
-    ),
-  ];
-
-  final List<Video> videos = <Video>[
-    new Video(
-        'Prueba 1'
-    ),
-    new Video(
-        'Prueba 2'
-    ),
-    new Video(
-        'Prueba 3'
-    ),
-  ];
-
-  final Statistics statistics = Statistics.randomize();
-
-  final List<Game> games = <Game> [
-    new Game(new DateTime.now()),
-  ];
-
-  final List<Game> playerGames = <Game> [
-    new Game(new DateTime.now()),
-  ];
+  final Model model = new Model.randomize();
 
   @override
   Widget build(BuildContext context) {
@@ -60,12 +22,12 @@ class MyApp extends StatelessWidget {
         '/' : (BuildContext context) => new LoadingScreen(),
         '/detect-peripherals':
             (BuildContext context) => new DetectPeripheralsScreen(),
-        '/home' : (BuildContext context) => new HomeScreen(profile, playerGames),
-        '/profile': (BuildContext context) => new ProfileScreen(profile),
-        '/friends': (BuildContext context) => new FriendListScreen(profile, friends),
-        '/gallery': (BuildContext context) => new Gallery(profile, videos),
-        '/statistics': (BuildContext context) => new StatisticsScreen(profile, statistics),
-        '/games': (BuildContext context) => new GamesScreen(profile, games, playerGames),
+        '/home' : (BuildContext context) => new HomeScreen(model.me, model.myGames),
+        '/profile': (BuildContext context) => new ProfileScreen(model.me),
+        '/friends': (BuildContext context) => new FriendListScreen(model.me, model.friends),
+        '/gallery': (BuildContext context) => new Gallery(model.me, model.videos),
+        '/statistics': (BuildContext context) => new StatisticsScreen(model.me, model.statistics),
+        '/games': (BuildContext context) => new GamesScreen(model.me, model.games, model.myGames),
       },
       theme: new ThemeData(
         // This is the theme of your application.
