@@ -11,26 +11,26 @@ class Statistics {
 
   Statistics(this._wins, this._games, this._landedShoots, this._shoots, this._distances);
 
-  static Statistics Randomize([int seed]) {
+  static Statistics randomize([int seed]) {
     Random random = new Random(seed);
-    List<int> games = new List(12);
-    for (int i = 0; i < 12; i++) {
+    List<int> games = new List(13);
+    for (int i = 0; i < 13; i++) {
       games[i] = random.nextInt(32);
     }
-    List<int> wins = new List(12);
-    for (int i = 0; i < 12; i++) {
+    List<int> wins = new List(13);
+    for (int i = 0; i < 13; i++) {
       wins[i] = random.nextInt(games[i] + 1);
     }
-    List<int> shoots = new List(12);
-    for (int i = 0; i < 12; i++) {
+    List<int> shoots = new List(13);
+    for (int i = 0; i < 13; i++) {
       shoots[i] = random.nextInt(games[i] * 1000 + 1);
     }
-    List<int> landedShoots = new List(12);
-    for (int i = 0; i < 12; i++) {
+    List<int> landedShoots = new List(13);
+    for (int i = 0; i < 13; i++) {
       landedShoots[i] = random.nextInt(shoots[i] + 1);
     }
-    List<double> distances = new List(12);
-    for (int i = 0; i < 12; i++) {
+    List<double> distances = new List(13);
+    for (int i = 0; i < 13; i++) {
       distances[i] = random.nextDouble() * games[i] * 2.0;
     }
     return new Statistics(

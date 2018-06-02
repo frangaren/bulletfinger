@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
     ),
   ];
 
-  final Statistics statistics = Statistics.Randomize();
+  final Statistics statistics = Statistics.randomize();
 
   @override
   Widget build(BuildContext context) {

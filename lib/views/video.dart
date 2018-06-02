@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:bulletfinger/models/video.dart' as model;
 
 class Video extends StatelessWidget {
-  model.Video video;
-  Function delete;
-  Function share;
-  Function play;
+  final model.Video video;
+  final Function delete;
+  final Function share;
+  final Function play;
 
   Video(this.video, {this.delete, this.share, this.play});
 

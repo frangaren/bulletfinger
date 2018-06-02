@@ -56,7 +56,7 @@ class VideoListState extends State<VideoList> {
 }
 
 class VideoList extends StatefulWidget {
-  List<model.Video> videos;
+  final List<model.Video> videos;
 
   VideoList(this.videos);
 
