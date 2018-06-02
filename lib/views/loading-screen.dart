@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class _LoadingScreenState extends State<LoadingScreen> {
 
@@ -8,9 +9,15 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIOverlays([]);
-    new Future.delayed(new Duration(seconds: 2)).then(
+    load().then(
             (_)=>Navigator.pushReplacementNamed(context, '/detect-peripherals')
     );
+  }
+
+  Future<bool> load() async {
+    await initializeDateFormatting('es_ES', null);
+    await new Future.delayed(new Duration(seconds: 2));
+    return true;
   }
 
   @override
