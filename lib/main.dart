@@ -7,6 +7,7 @@ import 'package:bulletfinger/views/profile-screen.dart';
 import 'package:bulletfinger/views/friend-list-screen.dart';
 import 'package:bulletfinger/views/gallery-screen.dart';
 import 'package:bulletfinger/views/statistics-screen.dart';
+import 'package:bulletfinger/views/home-screen.dart';
 import 'package:bulletfinger/models/video.dart';
 import 'package:bulletfinger/models/statistics.dart';
 
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
         '/' : (BuildContext context) => new LoadingScreen(),
         '/detect-peripherals':
             (BuildContext context) => new DetectPeripheralsScreen(),
-        '/home' : (BuildContext context) => new MyHomePage(profile, title: 'main'),
+        '/home' : (BuildContext context) => new HomeScreen(profile),
         '/profile': (BuildContext context) => new ProfileScreen(profile),
         '/friends': (BuildContext context) => new FriendListScreen(profile, friends),
         '/gallery': (BuildContext context) => new Gallery(profile, videos),
