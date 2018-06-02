@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:bulletfinger/views/view-game-screen.dart';
 import 'package:bulletfinger/models/game.dart';
 
 class GameNotification extends StatelessWidget {
   final Game game;
+  final List<Game> playerGames;
 
-  GameNotification(this.game);
+  GameNotification(this.game, this.playerGames);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,13 @@ class GameNotification extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   new FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(new MaterialPageRoute(
+                        builder: (BuildContext context) {
+                          return new ViewGameScreen(game, playerGames);
+                        },
+                      ));
+                    },
                     child: new Text(
                       'VER PARTIDA',
                       style: TextStyle(

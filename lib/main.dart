@@ -47,6 +47,10 @@ class MyApp extends StatelessWidget {
     new Game(new DateTime.now()),
   ];
 
+  final List<Game> playerGames = <Game> [
+    new Game(new DateTime.now()),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -55,7 +59,7 @@ class MyApp extends StatelessWidget {
         '/' : (BuildContext context) => new LoadingScreen(),
         '/detect-peripherals':
             (BuildContext context) => new DetectPeripheralsScreen(),
-        '/home' : (BuildContext context) => new HomeScreen(profile, games),
+        '/home' : (BuildContext context) => new HomeScreen(profile, playerGames),
         '/profile': (BuildContext context) => new ProfileScreen(profile),
         '/friends': (BuildContext context) => new FriendListScreen(profile, friends),
         '/gallery': (BuildContext context) => new Gallery(profile, videos),

@@ -6,16 +6,16 @@ import 'package:bulletfinger/views/game-notification.dart';
 
 class HomeScreen extends StatelessWidget{
   final Profile profile;
-  final List<Game> games;
+  final List<Game> playerGames;
 
-  HomeScreen(this.profile, this.games, {Key key}) : super(key: key);
+  HomeScreen(this.profile, this.playerGames, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     List<Widget> notifications = new List();
-    games.forEach((Game game) {
+    playerGames.forEach((Game game) {
       if (game.isAboutToStart()) {
-        notifications.add(new GameNotification(game));
+        notifications.add(new GameNotification(game, playerGames));
       }
     });
     return new Scaffold(
