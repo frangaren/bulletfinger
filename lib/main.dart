@@ -9,6 +9,7 @@ import 'package:bulletfinger/views/statistics-screen.dart';
 import 'package:bulletfinger/views/home-screen.dart';
 import 'package:bulletfinger/models/video.dart';
 import 'package:bulletfinger/models/statistics.dart';
+import 'package:bulletfinger/models/game.dart';
 
 void main() => runApp(new MyApp());
 
@@ -42,6 +43,10 @@ class MyApp extends StatelessWidget {
 
   final Statistics statistics = Statistics.randomize();
 
+  final List<Game> games = <Game> [
+    new Game(new DateTime.now()),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -50,7 +55,7 @@ class MyApp extends StatelessWidget {
         '/' : (BuildContext context) => new LoadingScreen(),
         '/detect-peripherals':
             (BuildContext context) => new DetectPeripheralsScreen(),
-        '/home' : (BuildContext context) => new HomeScreen(profile),
+        '/home' : (BuildContext context) => new HomeScreen(profile, games),
         '/profile': (BuildContext context) => new ProfileScreen(profile),
         '/friends': (BuildContext context) => new FriendListScreen(profile, friends),
         '/gallery': (BuildContext context) => new Gallery(profile, videos),
