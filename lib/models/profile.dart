@@ -35,13 +35,14 @@ class Profile {
       'Alvaro',
       'Roberto',
       'Nuria',
-      'Sandra'
+      'Sandra',
     ];
     const List<String> MAIL_DOMAINS = [
       '@gmail.com',
       '@hotmail.com',
       '@outlook.com',
       '@usal.es',
+      '@bash-team.local',
     ];
     Random random = new Random(seed);
     int seconds = random.nextInt(60);

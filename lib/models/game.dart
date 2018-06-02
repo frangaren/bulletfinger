@@ -29,8 +29,8 @@ class Game {
      hours: hours,
      days: days,
    ));
-   double latitude = 40.9634372 + (random.nextDouble() - 0.5) * 2.0 * 0.3;
-   double longitude = -5.6867217 + (random.nextDouble() - 0.5) * 2.0 * 1.0;
+   double latitude = 40.9634372 + (random.nextDouble() - 0.5) * 2.0 * 0.1;
+   double longitude = -5.6867217 + (random.nextDouble() - 0.5) * 2.0 * 0.1;
    return new Game(date, latitude, longitude);
  }
 
