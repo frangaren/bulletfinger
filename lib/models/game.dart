@@ -8,7 +8,7 @@ class Game {
  DateTime _date;
  double _lat;
  double _lng;
- String _locationName = 'noname';
+ String _locationName = 'Cargando...';
 
  Game([this._date, this._lat = 40.9607793, this._lng = -5.672235]) {
    if (this._date == null) {
